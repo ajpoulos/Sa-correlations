@@ -11,10 +11,10 @@ url: "https://github.com/ajpoulos/Sa-correlations"
 date-released: 2022-03-28
 preferred-citation:
   type: article
-  - family-names: Poulos
-    given-names: Alan
+  - family-names: "Poulos"
+    given-names: "Alan"
     orcid: "https://orcid.org/0000-0001-8654-1024"
-  - family-names: Miranda
-    given-names: Eduardo
+  - family-names: "Miranda"
+    given-names: "Eduardo"
   year: 2021
   title: "Damping-dependent correlations between response spectral ordinates"
