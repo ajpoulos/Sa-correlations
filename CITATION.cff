@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-- family-names: Poulos
-  given-names: Alan
+- family-names: "Poulos"
+  given-names: "Alan"
   orcid: "https://orcid.org/0000-0001-8654-1024"
-- family-names: Miranda
-  given-names: Eduardo
+- family-names: "Miranda"
+  given-names: "Eduardo"
 title: "Sa-correlations"
 url: "https://github.com/ajpoulos/Sa-correlations"
 date-released: 2022-03-28
