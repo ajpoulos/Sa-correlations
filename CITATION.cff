@@ -18,8 +18,5 @@ preferred-citation:
   - family-names: "Miranda"
     given-names: "Eduardo"
   journal: "Journal Title"
-  month: 9
-  title: "My awesome research software"
-  issue: 1
-  volume: 1
-  year: 2021
+  title: "Damping-dependent correlations between response spectral ordinates"
+  year: 2022
