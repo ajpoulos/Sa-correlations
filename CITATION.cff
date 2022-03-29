@@ -9,4 +9,17 @@ authors:
 title: "Sa-correlations"
 url: "https://github.com/ajpoulos/Sa-correlations"
 date-released: 2022-03-28
-
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Poulos"
+    given-names: "Alan"
+    orcid: "https://orcid.org/0000-0001-8654-1024"
+  - family-names: "Miranda"
+    given-names: "Eduardo"
+  journal: "Journal Title"
+  month: 9
+  title: "My awesome research software"
+  issue: 1
+  volume: 1
+  year: 2021
