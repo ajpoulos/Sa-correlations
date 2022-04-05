@@ -104,7 +104,7 @@ for i in range(npT):
     ax.set_xlim(np.log10(0.5), np.log10(30))
     ax.set_ylim(np.log10(0.5), np.log10(30))
     ax.set_zlim(vmins[i], vmaxs[i])
-    fig.colorbar(surf, ax=ax, label='Correlation')
+    fig.colorbar(surf, ax=ax, label='Correlation', shrink=0.85)
     ax.text2D(0.05, 0.9, letters[i], transform=ax.transAxes, fontsize=12)
 plt.subplots_adjust(wspace=0.1)
 
@@ -122,7 +122,7 @@ surf = ax.plot_surface(np.log10(X), np.log10(Y*100), correlations_PGV, ec='k',
                        cmap=coolwarm, linewidth=0.3, vmin=0.3, vmax=0.9)
 ax.plot(np.log10(T), np.log10(5)*np.ones(nT), correlations_PGV[ind_5p], 
         color='k', zorder=3, lw=1.5)
-fig.colorbar(surf, label='Correlation')
+fig.colorbar(surf, label='Correlation', shrink=0.7)
 plt.xlabel('Period [s]')
 plt.ylabel('Damping ratio [%]')
 ticksL_y = np.array([1, 3, 10, 30])
