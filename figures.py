@@ -106,13 +106,13 @@ for i in range(npT):
     ax.set_zlim(vmins[i], vmaxs[i])
     fig.colorbar(surf, ax=ax, label='Correlation', shrink=0.85)
     ax.text2D(0.05, 0.9, letters[i], transform=ax.transAxes, fontsize=12)
-plt.subplots_adjust(wspace=0.1)
+plt.subplots_adjust(wspace=-0.2)
 
 
 
 
 # Figure 7
-fig = plt.figure(figsize=(7,4))
+fig = plt.figure(figsize=(7,6))
 ax = fig.add_subplot(projection='3d')
 ax.view_init(azim=245)
 

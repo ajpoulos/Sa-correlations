@@ -8,43 +8,6 @@ import pandas as pd
 from scipy import interpolate
 
 
-def _readCSV(filename):
-    '''
-    Reads a CSV file that was saved by the least squares fitting.
-    
-    Parameters
-    ----------
-    filename : string
-        Name of the CSV file.
-    
-    Returns
-    ----------
-    data : (n,n) numpy array
-        Data matrix.
-    periods : (n,) numpy array
-        Periods of the columns and rows.
-    '''
-    
-    df = pd.read_csv(filename, index_col=0)
-    data = df.values
-    
-    columnNames = np.array(df.columns)
-    periods = np.array([float(name[2:]) for name in columnNames])
-    
-    return data, periods
-
-rho_5, T = _readCSV('rho5.csv')
-K1, __ = _readCSV('K1.csv')
-K3, __ = _readCSV('K3.csv')
-K5, __ = _readCSV('K5.csv')
-
-# Interpolate parameters
-f_rho_5 = interpolate.interp2d(T, T, rho_5)
-f_K1 = interpolate.interp2d(T, T, K1)
-f_K3 = interpolate.interp2d(T, T, K3)
-f_K5 = interpolate.interp2d(T, T, K5)
-
-
 
 def correlationModel(T1, xi1, T2, xi2):
     '''
@@ -74,7 +37,7 @@ def correlationModel(T1, xi1, T2, xi2):
         between spectral ordinates.
     '''
     
-    params = [f_K1(T2,T1), f_K1(T1,T2), f_K3(T2,T1), f_K3(T1,T2), f_K5(T2,T1)]
+    params = [f_A(T2,T1), f_A(T1,T2), f_B(T2,T1), f_B(T1,T2), f_C(T2,T1)]
     
     rho = f_rho_5(T1,T2) + _quadraticSurf(params, xi1, xi2)
     
@@ -82,6 +45,45 @@ def correlationModel(T1, xi1, T2, xi2):
         rho = rho[0]
     
     return rho
+
+
+
+
+def _readCSV(filename):
+    '''
+    Reads a CSV file that was saved by the least squares fitting.
+    
+    Parameters
+    ----------
+    filename : string
+        Name of the CSV file.
+    
+    Returns
+    ----------
+    data : (n,n) numpy array
+        Data matrix.
+    periods : (n,) numpy array
+        Periods of the columns and rows.
+    '''
+    
+    df = pd.read_csv(filename, index_col=0)
+    data = df.values
+    
+    columnNames = np.array(df.columns)
+    periods = np.array([float(name[2:]) for name in columnNames])
+    
+    return data, periods
+
+rho_5, T = _readCSV('rho5.csv')
+A, __ = _readCSV('A.csv')
+B, __ = _readCSV('B.csv')
+C, __ = _readCSV('C.csv')
+
+# Interpolate parameters
+f_rho_5 = interpolate.interp2d(T, T, rho_5)
+f_A = interpolate.interp2d(T, T, A)
+f_B = interpolate.interp2d(T, T, B)
+f_C = interpolate.interp2d(T, T, C)
     
 
 
