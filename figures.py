@@ -93,8 +93,9 @@ for i in range(npT):
     surf = ax.plot_surface(np.log10(Xi1*100), np.log10(Xi2*100), Z, 
                             cmap=coolwarm, linewidth=0.2, ec='k', vmin=vmins[i], 
                             vmax=vmaxs[i])
-    plt.xlabel(r'$\xi$ for T = '+str(T2s[i])+' s [%]')
-    plt.ylabel(r'$\xi$ for T = '+str(T1)+' s [%]')
+    ax.plot(np.log10(5), np.log10(5), Z[ind_5p,ind_5p], marker='o', markersize=3.5, color='k', zorder=100)
+    plt.xlabel(r'$\xi_2$ for $T_2$ = '+str(T2s[i])+' s [%]')
+    plt.ylabel(r'$\xi_1$ for $T_1$ = '+str(T1)+' s [%]')
     ticksL = np.array([1, 3, 10, 30])
     ticks = np.log10(ticksL)
     ax.set_yticks(ticks)
@@ -157,15 +158,17 @@ for j in np.arange(npXi-1,-1,-1):
         corr = correlations[indj,indj,ind,:]
         if i==0:
             label = r'$\xi_1$ = $\xi_2$ = '+str(int(xi[indj]*100))+r'%'
-            ax1.semilogx(T, corr, label=label, color='C'+str(j), ls='-')
+            ax1.semilogx(T, corr, label=label, color='C'+str(j), ls='-', lw=1)
         else:
-            ax1.semilogx(T, corr, color='C'+str(j), ls='-')
+            ax1.semilogx(T, corr, color='C'+str(j), ls='-', lw=1)
         
         # Correlations from regression model
         corrApprox = np.zeros(nT)
         for k in range(nT):
             corrApprox[k] = correlationModel(T[k], xi1[j], pT, xi1[j])
         ax1.semilogx(T, corrApprox, color='C'+str(j), ls='--', lw=2)
+
+ax1.plot(0.5, 0.5, color='0.5', ls='--', lw=2, label='Regression model')
 
 ax1.set_xlim(Tmin, Tmax)
 ax1.set_ylim(0, 1)
@@ -179,6 +182,9 @@ ax1.text(0.01, 1.04, '(a)', transform=ax1.transAxes, fontsize=12)
 # Different damping ratio for both oscillators
 xi2 = 0.01
 indXi2 = np.where(xi==xi2)[0][0]
+
+ax2.plot(0.5, 0.5, color='0.5', ls='--', lw=2, label='Regression model')
+
 for j in np.arange(npXi):
     indXi1 = np.where(xi==xi1[j])[0][0]
     for i,pT in enumerate(plotingTs):
@@ -188,9 +194,9 @@ for j in np.arange(npXi):
         corr = correlations[indXi1,indXi2,:,indT2]
         if i==0:
             label = r'$\xi_1$ = '+str(int(xi1[j]*100))+r'%, $\xi_2$ = 1%'
-            ax2.semilogx(T, corr, label=label, color='C'+str(j), ls='-')
+            ax2.semilogx(T, corr, label=label, color='C'+str(j), ls='-', lw=1)
         else:
-            ax2.semilogx(T, corr, color='C'+str(j), ls='-')
+            ax2.semilogx(T, corr, color='C'+str(j), ls='-', lw=1)
         
         # Correlations from regression model
         corrApprox = np.zeros(nT)
