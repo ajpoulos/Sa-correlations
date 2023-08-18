@@ -38,7 +38,6 @@ def correlationModel(T1, xi1, T2, xi2):
         Structural Dynamics`, 52(4), 1078-1090.
     '''
     
-    # params = [f_A(T2,T1), f_A(T1,T2), f_B(T2,T1), f_B(T1,T2), f_C(T2,T1)]
     params = [f_A(T1,T2), f_A(T2,T1), f_B(T1,T2), f_B(T2,T1), f_C(T1,T2)]
     
     rho = f_rho_5(T1,T2) + _quadraticSurf(params, xi1, xi2)
