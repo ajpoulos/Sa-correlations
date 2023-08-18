@@ -13,7 +13,7 @@ def correlationModel(T1, xi1, T2, xi2):
     '''
     Computes the correlation between spectral accelerations of different 
     damping ratios and periods using the model developed by Poulos & Miranda 
-    (2022).
+    (2023).
     
     Parameters
     ----------
@@ -33,11 +33,13 @@ def correlationModel(T1, xi1, T2, xi2):
     
     References
     ----------
-    .. [1] Poulos, A., and Miranda, E. (2022). Damping-dependent correlations 
-        between spectral ordinates.
+    .. [1] Poulos, A., and Miranda, E. (2023). Damping-dependent correlations 
+        between response spectral ordinates. `Earthquake Engineering & 
+        Structural Dynamics`, 52(4), 1078-1090.
     '''
     
-    params = [f_A(T2,T1), f_A(T1,T2), f_B(T2,T1), f_B(T1,T2), f_C(T2,T1)]
+    # params = [f_A(T2,T1), f_A(T1,T2), f_B(T2,T1), f_B(T1,T2), f_C(T2,T1)]
+    params = [f_A(T1,T2), f_A(T2,T1), f_B(T1,T2), f_B(T2,T1), f_C(T1,T2)]
     
     rho = f_rho_5(T1,T2) + _quadraticSurf(params, xi1, xi2)
     
