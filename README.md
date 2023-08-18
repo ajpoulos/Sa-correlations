@@ -7,4 +7,4 @@ The computed correlations correspond to those between the residuals of two spect
 
 * `main.py` runs the complete analysis that fits the model and produces figures.
 * `correlationModel.py` computes correlations using the fitted correlation model. Files rho5.csv, A.csv, B.csv, and C.csv must be in the same folder as this function.
-* `example.py` is an example use of `correlationModel.py`, which reproduces part of Figure 8a of the paper.
+* `example.py` is an example use of `correlationModel.py`, which reproduces part of Figure 8 of the paper.
